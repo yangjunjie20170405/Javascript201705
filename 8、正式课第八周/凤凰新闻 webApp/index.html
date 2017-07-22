@@ -1,0 +1,212 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title>凤凰新闻webApp首页</title>
+    <!--meta:vp tab-->
+    <meta name="viewport"
+          content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0"/>
+    <!--重置默认样式-->
+    <link rel="stylesheet" href="css/reset.min.css"/>
+    <!--swiper插件自带的css-->
+    <link rel="stylesheet" href="css/swiper.min.css"/>
+    <!--H5index.less 通过考拉工具自动生产的css样式表-->
+    <link rel="stylesheet" href="css/H5index.css"/>
+
+</head>
+<body>
+<!--header begin-->
+<header>
+    <h1 class="logo">
+        <img src="images/logo.png" alt=""/>
+    </h1>
+</header>
+<!--header end-->
+
+<!--nav begin-->
+<nav>
+    <div class="nav-inner">
+        <a href="#">推荐</a>
+        <a href="#">新闻</a>
+        <a href="#">娱乐</a>
+        <a href="#">体育</a>
+        <a href="#">图片</a>
+        <a href="#">财经</a>
+        <a href="#">汽车</a>
+        <a href="#">推荐</a>
+        <a href="#">新闻</a>
+        <a href="#">娱乐</a>
+        <a href="#">体育</a>
+        <a href="#">图片</a>
+        <a href="#">财经</a>
+        <a href="#">汽车</a>
+    </div>
+    <div class="nav-shadow1"></div>
+    <div class="nav-shadow2"></div>
+</nav>
+<!--nav end-->
+
+<!--main begin-->
+<div id="wrapper">
+    <div id="scroller">
+        <div id="pullDown">
+            <span class="pullDownIcon"></span><span class="pullDownLabel">下拉刷新...</span>
+        </div>
+
+        <div class="main">
+            <!--foucs-->
+            <div class="swiper-container focus">
+                <!--图片-->
+                <div class="swiper-wrapper">
+                </div>
+
+                <!--分页器-->
+                <div class="swiper-pagination"></div>
+            </div>
+
+            <!--内容-->
+            <div class="col"></div>
+        </div>
+
+        <div id="pullUp">
+            <span class="pullUpIcon"></span><span class="pullUpLabel">上拉加载更多...</span>
+        </div>
+    </div>
+</div>
+<!--main end-->
+
+<!--漂浮栏-->
+<div class="sub-box">
+    <a href="javascript:;"><span class="icon_toTop"></span></a>
+    <a href="javascript:;"><span class="icon_refresh"></span></a>
+</div>
+
+
+<!--焦点图的第三步:造模版
+js的代码 <%%>
+js输入的代码 <%=%>
+-->
+<script type="text/template" id="focusTemplate">
+    <%data.forEach(function(item,index){%>
+    <div class="swiper-slide">
+        <a href="<%=item.link.weburl%>">
+            <img src="<%=item.thumbnail%>" alt="<%=item.title%>"/>
+            <h2><%=item.title%></h2>
+        </a>
+    </div>
+    <%})%>
+</script>
+
+<!-- 中间内容第三步:造模块 -->
+<script type="text/template" id="listTemplate">
+    <%dataList.forEach(function(item,index){%>
+        <%if (item.style.images) {%>
+        <section class="itemPics">
+            <a href="<%=item.link.weburl%>">
+                <h2><%=item.title%></h2>
+                <div class="picBox">
+                    <div class="pics">
+                        <img src="<%=item.style.images[0]%>" alt=""/>
+                        <img src="<%=item.style.images[1]%>" alt=""/>
+                        <img src="<%=item.style.images[2]%>" alt=""/>
+                    </div>
+                </div>
+                <div class="info">
+                    <div class="left">
+                        <div class="source"><%=item.source%></div>
+                        <div class="time"><%=changeTime(item.updateTime)%></div>
+                    </div>
+
+                    <div class="right">
+                        <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                        <%if(item.style.attribute){%>
+                        <div class="label"><%=item.style.attribute%></div>
+                        <%}%>
+                    </div>
+                </div>
+            </a>
+        </section>
+        <%} else if (item.type == 'phvideo'){%>
+    <section class="itemPics">
+        <a href="<%=item.link.weburl%>">
+            <h2><%=item.title%></h2>
+
+            <div class="bigPic">
+                <img src="<%=item.thumbnail%>" alt="<%=item.title%>"/>
+            </div>
+
+            <div class="info">
+                <div class="left">
+                    <div class="source"><%=item.source%></div>
+                    <div class="time"><%=changeTime(item.updateTime)%></div>
+                </div>
+
+                <div class="right">
+                    <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                    <%if(item.style.attribute){%>
+                    <div class="label"><%=item.style.attribute%></div>
+                    <%}%>
+                </div>
+            </div>
+        </a>
+    </section>
+        <%} else if (item.thumbnail) {%>
+    <section class="item">
+        <a href="<%=item.link.weburl%>">
+            <!--图片-->
+            <img class="pic" src="<%=item.thumbnail%>" alt="<%=item.title%>"/>
+
+            <!--文字-->
+            <div class="txt">
+                <h2><%=item.title%></h2>
+                <div class="info">
+                    <div class="left">
+                        <div class="source"><%=item.source%></div>
+                        <div class="time"><%=changeTime(item.updateTime)%></div>
+                    </div>
+
+                    <div class="right">
+                        <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                        <%if(item.style.attribute){%>
+                        <div class="label"><%=item.style.attribute%></div>
+                        <%}%>
+                    </div>
+                </div>
+            </div>
+        </a>
+    </section>
+        <%} else {%>
+    <section class="itemPics">
+        <a href="<%=item.link.weburl%>">
+            <h2 class="tit"><%=item.title%></h2>
+            <div class="info">
+                <div class="left">
+                    <div class="source"><%=item.source%></div>
+                    <div class="time"><%=changeTime(item.updateTime)%></div>
+                </div>
+
+                <div class="right">
+                    <div class="comment"><%=item.commentsall%><span class="icon_comment"></span></div>
+                    <%if(item.style.attribute){%>
+                    <div class="label"><%=item.style.attribute%></div>
+                    <%}%>
+                </div>
+            </div>
+        </a>
+    </section>
+        <%}%>
+    <%})%>
+</script>
+
+
+<!--swiper插件自带的js-->
+<script type="text/javascript" src="js/swiper.min.js"></script>
+<!--iscroll插件自带的js-->
+<script type="text/javascript" src="js/iscroll.js"></script>
+<!--第一步曲 ejs 模板引擎插件-->
+<script type="text/javascript" src="js/ejs.min.js"></script>
+<!--zepto-->
+<script type="text/javascript" src="js/zepto.min.js"></script>
+<script type="text/javascript" src="js/H5index.js"></script>
+</body>
+</html>

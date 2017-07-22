@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    function createXHR() {
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            // 在　IE6 下创建ajax对象
+            try{
+                xhr = new ActiveXObject("Microsoft.XMLHTTP")
+            }catch (e){
+                try{
+                    xhr = new ActiveXObject("Msxml2.XMLHTTP");
+                }catch(e){
+                    xhr = new ActiveXObject("Msxml3.XMLHTTP");
+                }
+            }
+        }
+        return xhr;
+    }
+    var data = null;
+    var xhr = createXHR();
+    xhr.open("post","./data.txt",true);
+    xhr.onreadystatechange = function () {
+        if(xhr.readyState === 4 && /^2\d{2}/.test(xhr.status)){
+            data = xhr.responseText;
+        }
+    }
+    //请求方式 的区别 ： 客户端向服务器发送的方式
+    // 从根本上上没有什么太大区别，
+    // get  post  put  delete head..
+
+    // put  : 一般应用于给服务器增加资源文件（上传图片）
+    // delete : 一般应用于从服务器删除资源文件
+    // head : 一般应用于只获取服务器的响应头信息
+
+    // get  : 一般应用于服务器获取数据（给服务器的数据少，获取拿得数据多，最常用的这种请求方式是get）
+    // 使用时get请求，给服务器传内容，一般都使用？uRL传参的方式
+    var val = oInput.value;
+    xhr.open("get",'/js/index.js?username='+val)
+    xhr.send();
+
+    // post  : 一般向服务器新增数据（给服务器的多，自己拿得少）
+    // 使用post请求向服务器传递内容，一般使用“请求主体的方式”传给服务器
+    xhr.open("post","/js/index.js");
+    xhr.send('{"name":"zhufeng"}');
+    // GET 和POST的区别
+    // 大小问题
+    // GET 请求传递给服务器的内容存在大小的限制，POST理论上不存在大小限制
+    // 原因： GET通过URL传参给服务器，但是每个浏览器对于URL的长度有限制，谷歌 8kb  火狐7kb  IE 2kb的长度限制，如果url 的长度已经超出限制，浏览器会把超出的部分截取
+
+    // 缓存问题 ：
+    // GET 请求会出现缓存，post是没有缓存的
+    // 在项目中怎么让GET请求不让其走缓存，在URL的末尾加一个随机数
+    // xhr.open("get","/index.html?_="+Math.random())
+
+    // 安全问题 ：
+    // 一般情况下GET不安全，POST相对安全一些；
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

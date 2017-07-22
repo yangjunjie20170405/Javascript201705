@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // 通过netWork中观看，我们浏览器把HTML的源代码请求回来，浏览器按照自己的引擎进行渲染，在渲染的过程中，浏览器还会想服务器取请求css/js、img...,每一次请求步骤和HTML的步骤一样，如果请求的次数越多，页面打开的速度或渲染的速度就会变慢，在页面优化中，减少浏览器的请求也是对当前页面的优化
+    // 1) 合并css，或者css 如果不是很多可以内嵌式
+    // 2) js 合并 或者采用内嵌式
+    // 3) 图片合并 （雪碧图）
+    // 4) ajax 尽量减少请求次数
+
+    // 在工作中   上线  ：把项目发布到云服务器上面
+         // 制定需求  一张图片
+         // 开发    写代码
+        //  接口 、 参数  进行前后台一个联调
+        // 发布svn  开发人员内部进行测试
+        // 提交到测试
+        //本地修改完 代码比较的工具 compare （比较文件）
+
+//    (function () {
+//        var sum = 88;
+//        var data = null;
+//        $.ajax({
+//            url:"../",
+//            type:"get",
+//            success:function (data) {
+//                data=data;
+//            }
+//        })
+//        function sum() {
+//            var user = data.username;
+//
+//        }
+//        function total() {
+//            var word = data.password;
+//
+//        }
+//    })();
+//    {username:[用户名]，password:[密码]}
+    //url : 统一资源定位符
+    //url = uri + urn
+    // uri  ： 统一资源标识符
+    //urn  : 统一资源名称
+      //    url
+    // 传输协议：
+     // http : 超文本传输协议 ，除了可以传输文本，还可以传输其他的东西 XML (自定义的标签)  客户端给服务器的内容和服务器给客户端的内容都是通过http协议进行传输的（我们把HTTP理解就是快递小哥）
+    // https : 更加安全的HTTP
+    // ftp : 文件传输协议（应用于把项目源文件传到服务器上）
+
+    //https://www.baidu.com/  默认的端口是443；
+    //http  : 默认的端口都是80
+    // ftp ： FTP 默认去找服务器的21端口
+
+    // 后台经常说的接口
+    // 登录网站
+
+    // https://443/www.baidu.com/his?username=niuxiaoxin&password=111111#aaa;
+    //  #aaa :url hash(锚点定位)
+    // url 可以通过问号传参
+     // ?后面的是参数  & 把每一组参数分开
+
+
+
+    btn.onclick = function () {
+        var str = document.getElementById("uuu").value;
+        var str1 = document.getElementById("ppp").value;
+        $.ajax({
+            url : "www.baidu.com/his?",
+            type: "get",
+            data : {
+//              给服务器传的参数
+                username: str,
+                password: str1
+            }
+        })
+
+    }
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

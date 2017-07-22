@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";AACA;AACA;AACA;AACA;AACA;;AAEA,IAAI,OAAO,QAAQ,MAAR,CAAX;AACA,IAAI,KAAK,QAAQ,IAAR,CAAT;AACA,KAAK,YAAL","file":"index-compiled.js","sourcesContent":["\n// for(var i=0;i<10;i++){\n//\n// }\n// console.log(i);// 9\n//  require 是导入模块\n\nvar http = require(\"http\");\nvar fs = require(\"fs\");\nhttp.createServer();"]}

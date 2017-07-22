@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<!--<script type="text/javascript" src="http.js"></script>-->
+<script type="text/javascript">
+    //  NODE模块
+
+    // 内置模块 (http  fs  url...)
+    // http.createServer  fs.readFileSync (读取文件)
+    // 自定义模块
+    // 在NODE环境中，在当前项目下创建一个js文件，就相当于创建一个模块
+    // 如果需要提供一些方法给其他的模块用，可以通过module.exports把方法导出，module.exports.fn = fn;或module.exports = {fn:fn}
+
+    // 如果在B模块中，首先需要导入模块A var a = require(./a),这样就可以调用a中的方法
+
+    // 第三方模块 ： 别人写好的模块，我们拿来用，
+    // npm 是node的第三方管理模块工具
+    // 安装第三方模块 npm install 第三方模块名称 -g(安装到全局下)
+    // 卸载 ： npm uninstall 第三方模块名称  -g
+    //less
+    // 安装成功之后，通过var a = require("less");把第三方模块导入到js中，这样可以用模块里面的方法
+
+//    http.createServer()
+
+
+</script>
+</body>
+</html>

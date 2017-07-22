@@ -1,0 +1,39 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    //
+    var xhr = new XMLHttpRequest();
+    console.log(xhr)
+    // 为了兼容IE6 以及更低的版本，
+    function createXHR() {
+        var xhr = null;
+        if(window.XMLHttpRequest){
+            xhr = new XMLHttpRequest();
+        }else{
+            // 在　IE6 下创建ajax对象
+            try{
+            xhr = new ActiveXObject("Microsoft.XMLHTTP")
+        }catch (e){
+            try{
+                xhr = new ActiveXObject("Msxml2.XMLHTTP");
+            }catch(e){
+                xhr = new ActiveXObject("Msxml3.XMLHTTP");
+            }
+        }
+        }
+        return xhr;
+    }
+    var xhr1 = createXHR();
+    var xhr2 = createXHR();
+
+
+
+
+</script>
+</body>
+</html>

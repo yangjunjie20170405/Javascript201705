@@ -1,0 +1,367 @@
+@font-face{
+  font-family: 'icomoon';
+  src: url('../fonts/icomoon.eot');
+  src: url('../fonts/icomoon.eot?#iefix') format('embedded-opentype'),
+  url('../fonts/icomoon.woff') format('woff'),
+  url('../fonts/icomoon.ttf')  format('truetype'),
+  url('../fonts/icomoon.svg#icomoon') format('svg');
+}
+[class^='icon_'],[class*='icon_']{
+  font-family: 'icomoon';
+  font-weight:normal;
+  font-style:normal;
+  /*面试题:图标字体出现锯齿 不清晰*/
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+.icon_comment:after{
+  content: "\e900";
+}
+.icon_toTop:after{
+  content: '\ea3a';
+}
+.icon_refresh:after{
+  content:"\e984";
+}
+
+
+
+//pulic
+.nav-shdaow {
+  z-index: 99;
+  position: fixed;
+  top: .8rem;
+  width: 10%;
+  height: .8rem;
+}
+.flex{
+  display:-webkit-flex;
+  display:flex;
+}
+.title{
+  line-height: .44rem;
+  font-size: .36rem;
+  color: #1a1a1a;
+  /*
+  面试题：多行文本出现省略号必备的4个条件
+  1.弹性盒模型
+  2.文字的排列方向 - 垂直方向
+  3.文字显示的行数
+  4.溢出隐藏
+  */
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  overflow: hidden;
+}
+//header
+header {
+  z-index: 99;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: .8rem;
+  background-color: #fff;
+  border-bottom: .01rem solid #e3e3e3;
+  //解决margin-top的传递问题
+  overflow: hidden;
+  .logo {
+    width: 1.95rem;
+    height: .37rem;
+    margin: .21rem auto 0;
+    img {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+  }
+}
+
+//nav
+nav {
+  z-index: 99;
+  position: fixed;
+  top: .81rem;
+  left: 0;
+  width: 100%;
+  height: .8rem;
+  line-height: .8rem;
+  background-color: #f7f7f7;
+  overflow: hidden;
+  overflow-x: scroll;
+  font-size: 0;
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  .nav-inner {
+    white-space: nowrap;
+    a {
+      display: inline-block;
+      padding: 0 .16rem;
+      font-size: .36rem;
+      color: #727272;
+    }
+  }
+  .nav-shadow1 {
+    .nav-shdaow;
+    left: 0;
+    background: linear-gradient(to right, #000, transparent);
+  }
+  .nav-shadow2 {
+    .nav-shdaow;
+    right: 0;
+    background: linear-gradient(to left, #000, transparent);
+  }
+}
+
+//wrapper
+#wrapper{
+  width:100%;
+  position:absolute;
+  top:0;
+  bottom:0;
+  z-index:10;
+}
+#pullDown, #pullUp {
+  background:#fff;
+  height:40px;
+  line-height:40px;
+  padding:5px 10px;
+  border-bottom:1px solid #ccc;
+  font-weight:bold;
+  font-size:14px;
+  color:#888;
+}
+#pullDown .pullDownIcon, #pullUp .pullUpIcon  {
+  display:block; float:left;
+  width:40px; height:40px;
+  background:url(http://sandbox.runjs.cn/uploads/rs/200/ptvnx6ur/pull-icon@2x.png) 0 0 no-repeat;
+  -webkit-background-size:40px 80px;
+  background-size:40px 80px;
+  -webkit-transition-property:-webkit-transform;
+  -webkit-transition-duration:250ms;
+}
+#pullDown .pullDownIcon {
+  -webkit-transform:rotate(0deg) translateZ(0);
+}
+#pullUp .pullUpIcon  {
+  -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullDown.flip .pullDownIcon {
+  -webkit-transform:rotate(-180deg) translateZ(0);
+}
+
+#pullUp.flip .pullUpIcon {
+  -webkit-transform:rotate(0deg) translateZ(0);
+}
+
+#pullDown.loading .pullDownIcon, #pullUp.loading .pullUpIcon {
+  background-position:0 100%;
+  -webkit-transform:rotate(0deg) translateZ(0);
+  -webkit-transition-duration:0ms;
+
+  -webkit-animation-name:loading;
+  -webkit-animation-duration:2s;
+  -webkit-animation-iteration-count:infinite;
+  -webkit-animation-timing-function:linear;
+}
+
+@-webkit-keyframes loading {
+  from { -webkit-transform:rotate(0deg) translateZ(0); }
+  to { -webkit-transform:rotate(360deg) translateZ(0); }
+}
+
+//focus
+.main {
+  padding-top: 1.61rem;
+  .focus {
+    position: relative;
+    a {
+      color: #fff;
+      img {
+        display: block;
+        width: 100%;
+      }
+      h2 {
+        position: absolute;
+        left: 0;
+        bottom: 0;
+        width: 100%;
+        height: .8rem;
+        line-height: .8rem;
+        padding: 0 1rem 0 .3rem;
+        font-size: .22rem;
+        background: linear-gradient(to bottom, transparent, #000);
+        box-sizing: border-box;
+        //单行文本出现省略号必备的4个条件
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+    }
+    .swiper-pagination {
+      color: #fff;
+      font-size: .2rem;
+      text-align: right;
+      left: auto;
+      right: .2rem;
+      .swiper-pagination-current {
+        font-size: .36rem;
+        color: #f54343
+      }
+    }
+  }
+}
+
+section{
+  border-bottom:.01rem solid #efefef;
+}
+//左图右文
+.item {
+  padding: .24rem .3rem;
+  a {
+    //新版本的写法
+    .flex;
+    .pic {
+      display: block;
+      width: 1.82rem;
+      height: 1.3rem;
+      margin-right: .3rem;
+    }
+    .txt {
+      //总的宽度 除掉图片的宽度剩下的全是我文字内容的宽度
+      -webkit-flex: 1;
+      flex: 1;
+      //新版的写法
+      .flex;
+      //控制元素的对齐方式  两端对齐
+      justify-content: space-between;
+      //控制元素的排列方向 垂直
+      flex-direction: column;
+      font-size:.22rem;
+      color:#999;
+      h2 {
+        .title;
+      }
+      .info{
+        .flex;
+        justify-content: space-between;
+        .left{
+          .flex;
+          .source{
+            margin-right:.2rem;
+          }
+        }
+        .right{
+          .flex;
+          .icon_comment{
+            margin-left:.1rem;
+            vertical-align: middle;
+          }
+          .label{
+              padding:0 .06rem;
+              margin-left:.2rem;
+              border:1px solid #f54343;
+              color:#f54343;
+              border-radius:.03rem;
+          }
+        }
+      }
+    }
+  }
+}
+
+//三小图
+.itemPics{
+  padding:.24rem .3rem;
+  h2{
+    .title;
+  }
+  h2.tit{
+    margin-bottom:.7rem;
+  }
+  //三小图
+  .picBox{
+    margin:.25rem 0;
+    overflow:hidden;
+    .pics{
+      margin-left:-.09rem;
+      img{
+        float:left;
+        width:33.33%;
+        padding-left:.09rem;
+        box-sizing: border-box;
+      }
+    }
+  }
+  //大图
+  .bigPic{
+    margin:.25rem 0;
+    img{
+      display:block;
+      width:100%;
+    }
+  }
+  .info{
+    .flex;
+    justify-content: space-between;
+    color:#999;
+    font-size:.22rem;
+    .left{
+      .flex;
+      .source{
+        margin-right:.2rem;
+      }
+    }
+    .right{
+      .flex;
+      .icon_comment{
+        margin-left:.1rem;
+        vertical-align: middle;
+      }
+      .label{
+        padding:0 .06rem;
+        margin-left:.2rem;
+        border:1px solid #f54343;
+        color:#f54343;
+        border-radius:.03rem;
+      }
+    }
+  }
+}
+
+//漂浮栏
+.sub-box{
+  position: fixed;
+  right:.53rem;
+  bottom:1.5rem;
+  z-index:9999;
+  a{
+    display:block;
+    width:.8rem;
+    height:.8rem;
+    line-height: .8rem;
+    text-align: center;
+    margin-bottom:.4rem;
+    background:rgba(0,0,0,.5);
+    font-size:.5rem;
+    color:#fff;
+    .icon_refresh{
+      font-size:.4rem;
+    }
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+

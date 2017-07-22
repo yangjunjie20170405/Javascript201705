@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // NODE是一个环境，在服务端提供js运行的一个环境
+    // NODE 里面有好多模块： 内置模块 自定义模块 第三方模块
+
+    var http = require("http");
+    var fs = require("fs");
+    var url = require("url");
+    // 最多可以创建65535个服务
+    var server=http.createServer(function (req,res) {
+        // 回调函数执行的条件 ： 客户端发送请求，并且服务器成功返回内容执行这个函数；
+        //req   请求一些信息
+        // res  响应的信息
+
+        var urlObj = url.parse(req.url);
+        var pathname = urlObj.pathname;
+        if(pathname === "/index.html"){
+            var content =fs.readFileSync("./index.html","utf-8");
+            res.write(content)
+            res.end();
+        }
+    });// 创建一个服务
+    // listen 第一个参数
+    server.listen(80,function () {
+        // 回调函数执行条件： 当服务创建成功，并且监听成功，会执行这个回调函数
+    })
+//    var server1=http.createServer();
+//    // MAC 本监听成功的端口号必须是2000，最好3000到10000之间；
+//    server1.listen(80,function () {
+//        // 回调函数执行条件： 当服务创建成功，并且监听成功，会执行这个回调函数
+//
+//    });
+
+    // ajax :   async  javascript  and  xml
+
+
+
+
+
+
+
+
+
+
+
+</script>
+</body>
+</html>

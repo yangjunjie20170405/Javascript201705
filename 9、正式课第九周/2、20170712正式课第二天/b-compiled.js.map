@@ -1,0 +1,1 @@
+{"version":3,"sources":["b.js"],"names":[],"mappings":"AAAA;AACA;AACA;AACA;AACA;AACA;;AAEA,IAAI,OAAO,QAAQ,MAAR,CAAX;AACA,KAAK,MAAL","file":"b-compiled.js","sourcesContent":["// function fn() {\n//     console.log(2)\n// }\n// // module.exports.fn = fn;\n// var a = require('./a');\n// a.fn()\n\nvar less = require('less');\nless.render()\n\n\n"]}

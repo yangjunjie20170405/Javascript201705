@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box">
+    <a href="add.html" class="link">增加新客户</a>
+    <h2 class="head">
+        <span class="w50">编号</span>
+        <span class="w150">姓名</span>
+        <span class="w50">年龄</span>
+        <span class="w200">电话</span>
+        <span class="w200">地址</span>
+        <span class="w150">操作</span>
+    </h2>
+    <ul class="list" id="list">
+        <!--<li>-->
+            <!--<span class="w50">12</span>-->
+            <!--<span class="w150">xxx</span>-->
+            <!--<span class="w50">277</span>-->
+            <!--<span class="w200">899</span>-->
+            <!--<span class="w200">90</span>-->
+            <!--<span class="w150">-->
+                <!--<a href="">修改</a>-->
+                <!--<a href="">删除</a>-->
+            <!--</span>-->
+        <!--</li>-->
+    </ul>
+</div>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+    var oUl = document.getElementById("list");
+    oUl.onclick = function (e) {
+        //
+        e = e || window.event;
+        var tar = e.target || e.srcElement;
+        if(tar.innerHTML === "删除"){
+            var customId = tar.getAttribute("customId");
+            // window.confirm : 确认提示框，如果点击是确定这个返回值就是true,如果是取消，返回值false;
+            var flag=window.confirm("您确定要删除编号为"+customId+"客户吗");
+            if(flag){
+                ajax({
+                    url : "/removeInfo?id="+customId,
+                    success:function (jsonData) {
+                        console.log(jsonData)
+                        if(jsonData.code == 0){
+                            oUl.removeChild(tar.parentNode.parentNode);
+                            return;
+                        }
+                        alert(jsonData.msg)
+                    }
+                })
+            }
+
+        }
+    }
+    // 1、获取后台准备好的客户信息
+    function bindHTML(data) {
+        var str = '';
+        for(var i=0;i<data.length;i++){
+            // 当前项是一个对象
+            var curData = data[i];
+            str+='<li>';
+            str+= '<span class="w50">'+curData["id"]+'</span>';
+            str+= '<span class="w150">'+curData["name"]+'</span>';
+            str+= '<span class="w50">'+curData["age"]+'</span>';
+            str+= '<span class="w200">'+curData["phone"]+'</span>';
+            str+= '<span class="w200">'+curData["address"]+'</span>';
+            str+='<span class="w150">';
+            str+='<a href="add.html?id='+curData["id"]+'" customId="'+curData["id"]+'">修改</a>';
+            str+='<a href="javascript:;"  customId="'+curData["id"]+'">删除</a>';
+            str+='</span>'
+            str+='</li>';
+        };
+        oUl.innerHTML = str;
+    }
+    function init() {
+        ajax({
+            url : "/getList",
+            success:function (jsonData) {
+//                console.log(jsonData)
+                if(jsonData.code==0){
+                    var data = jsonData["data"]
+                    bindHTML(data);
+                }
+            }
+        })
+    }
+    init();
+    
+    
+</script>
+</body>
+</html>

@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head lang="en">
+    <meta charset="UTF-8">
+    <title></title>
+    <style type="text/css">
+        #div {
+            width: 100px;
+            height: 100px;
+            background: red;
+            position: absolute;
+            top: 30px;
+            left: 50%;
+        }
+    </style>
+</head>
+<body>
+<div id="div" onclick="fn()"></div> <!--报错 ，在这个里面定义，浏览器会再在外面包一个function函数，然后传event的值，所以这里的fn()需要接收，所以需要fn(event)，要不会报错说下面的e是undefined-->
+<!--<div id="div" onclick="fn(event)"></div>-->
+</body>
+</html>
+<script type="text/javascript">
+    function fn(e) {
+        alert(e.pageX);
+    }
+</script>

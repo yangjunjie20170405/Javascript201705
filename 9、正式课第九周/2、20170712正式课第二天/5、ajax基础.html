@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // Ajax ： async javascript and xml 异步的js和xml;
+    // ajax 是客户端的方法 ，用来向服务器发送请求（还可以给服务器传数据），把服务器的返回的内容数据获取到
+    //ajax 的四步
+
+    // 创建一个ajax 的对象（这种方式在IE6及以下的低版本浏览器是不兼容的）
+    var xhr=new XMLHttpRequest(); //
+    console.log(xhr.readyState); // 0
+    // 发送前基本信息的配置
+    // 请求方式（get  post put delete head...）
+    // 打开一个url 地址
+    // 同步异步（true : 异步；false:同步；默认是true）
+
+    xhr.open("get","./data.txt",true); //1
+    console.log(xhr.readyState);
+    //ajax 对象监听  给xhr这个ajax 对象的onreadystatechange这个属性绑定一个方法，监听状态的改变（只要状态发生改变就会执行）
+    xhr.onreadystatechange=function () {
+        console.log(xhr.readyState);
+         // 0   当前请求并没有发送，只是创建一个ajax 对象
+        // 1   url地址已经打开，（发送前的参数已经配置完成）
+        // 2    响应头信息已经接受
+        // 3 主要返回的内容服务器正在进行处理
+        // 4  响应主体的内容已经成功返回到客户端
+        if(xhr.readyState==4&&xhr.status==200){
+            data=xhr.responseText
+        }
+    };
+
+    xhr.send();
+
+
+
+
+
+
+</script>
+</body>
+</html>

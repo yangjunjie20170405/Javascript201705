@@ -1,0 +1,1 @@
+{"version":3,"sources":["index.js"],"names":[],"mappings":";AACA,IAAI,OAAO,SAAS,cAAT,CAAwB,KAAxB,CAAX;AACA,KAAK,OAAL,GAAe,YAAY;AACvB,SAAK,KAAL,CAAW,UAAX,GAAwB,MAAxB;AACH,CAFD","file":"index-compiled.js","sourcesContent":["\nvar box1 = document.getElementById(\"box\");\nbox1.onclick = function () {\n    this.style.background = \"#EEE\";\n}"]}

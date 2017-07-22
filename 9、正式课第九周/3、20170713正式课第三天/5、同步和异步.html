@@ -1,0 +1,148 @@
+    <!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+</head>
+<body>
+<script type="text/javascript">
+    // async  : 异步  sync : 同步
+
+    //  JS 是单线程的；不能同时执行两个任务
+    // 定时器是异步编程
+    // 事件的绑定都是异步编程的
+    // 回调函数也可以认为异步编程
+//    function sum(callBack) {
+//        callBack();
+//    }
+//    function callBack() {
+//
+//    }
+//    callBack()
+//    button.onclick = function () {
+//        console.log(1)
+//    }
+//    var count =0;
+//    window.setTimeout(function () {
+//        count++;
+//        console.log(count) // 1
+//    },0);// 谷歌浏览器下识别定时器最小的时间单位5-6ms;定时器设置成0，定时器不会马上执行
+//    console.log(count) // 0
+
+//    var count =0;
+//    window.setTimeout(function () {
+//        count++;
+//        console.log(count) // 1
+//    },5);// 谷歌浏览器下识别定时器最小的时间单位5-6ms;定时器设置成0，定时器不会马上执行
+//    for(var i=0;i<100000000;i++){
+//       i++;
+//       i--;
+//    }
+//    console.log(count)
+//
+//    var count =0;
+//    var time1 = new Date();
+//    console.log(time1);
+//    window.setTimeout(function () {
+//        count++;
+//        console.log(count) // 没有任何的输出；定时器设定好时间，看来不一定到时间就执行，如果当前的浏览器的线程被占用，定时器就需要等到浏览器另一个线程结束才可以执行
+//    },70);
+//    for(var i=0;i<1000000000;i++){
+////
+//    }
+//    window.setTimeout(function () {
+//        count++;
+//        console.log(count) // 没有任何的输出；定时器设定好时间，看来不一定到时间就执行，如果当前的浏览器的线程被占用，定时器就需要等到浏览器另一个线程结束才可以执行
+//    },66);
+
+    // 如果有多个定时器，如果执行下面的代码定时器已经到达时间，先执行时间短的那个定时器
+//    console.log(new Date())
+//    console.log(count)
+
+//    var time=new Date();
+//    console.log(time);
+//    var n=0;
+//
+//    window.setTimeout(function () {
+//        console.log(2);
+//    },50);
+    // 当代码执行到这一行时，浏览器会记录一个时间
+//    window.setTimeout(function () {
+//        console.log(1111);
+//    },30)
+    //    for(var i=0;i<1345378511;i++){
+    //
+    //    }
+
+    // Ajax中的同步： 当ajax这个任务开始的时候，（xhr.send()）,一直需要到readyState ===4 的时候这个任务才算结束；此时才可以处理其他的事情
+
+    // Ajax的异步 ： 当ajax这个任务开始的时候，（xhr.send()）,不需要到readyState ===4；我们依然可以执行其他的任务，并且只有当其他的任务完成后，我们来看当前的readyState是否等于4
+//    var xhr = new XMLHttpRequest();
+//    xhr.open("get","./data.txt",true);
+//    xhr.onreadystatechange = function () {
+//        if(xhr.readyState === 4&&xhr.status ===200){
+//            console.log(3);
+//        }
+//    }
+//    xhr.send();
+//    console.log(1)
+//    var xhr = new XMLHttpRequest();
+//    xhr.open("get","./data.txt",true); // 异步输出234
+//    xhr.onreadystatechange = function () {
+//        console.log(xhr.readyState) // 2 3 4
+//
+//    };
+//    xhr.send();
+
+//    var xhr = new XMLHttpRequest();
+//    xhr.onreadystatechange = function () {
+//        console.log(xhr.readyState) // 1  2  3 4
+//    };
+//    xhr.open("get","./data.txt",true); // 异步输出234
+//    xhr.send();
+
+//    var xhr = new XMLHttpRequest();
+//    console.log(xhr.readyState)
+//    xhr.open("get","./data.txt",false); //
+//    console.log(xhr.readyState)
+////    xhr.onreadystatechange = function () {
+//    //        console.log(xhr.readyState) //4
+//    //    };
+//    xhr.send();
+//    var xhr = new XMLHttpRequest();
+////    console.log(xhr.readyState)
+//    xhr.open("get","./data.txt",false); //true
+//
+//    xhr.send();
+//    xhr.onreadystatechange = function () {
+//        console.log(xhr.readyState) // false没有任何的输出  true : 234
+//    };
+    // jQuery的ajax
+    search.onclick = function () {
+        var val = 2;
+        $.ajax({
+            url : "./data.txt",
+            type:"get",
+//        async:true  // 默认的是异步
+            dataType: "json",
+//        username : "",
+//        password:""
+            data :{
+                method : val,
+                input1 : 1,
+                input2 : 1
+            },
+            success: function (data) {
+
+            }
+
+        })
+    }
+   // 作业 ： 用原生的ajax实现jQuery中的ajax；
+
+    
+
+
+</script>
+</body>
+</html>

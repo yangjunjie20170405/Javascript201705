@@ -1,0 +1,124 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>Title</title>
+    <link rel="stylesheet" href="css/index.css">
+</head>
+<body>
+<div class="box2">
+    <div>
+        <span>姓名</span>
+        <input type="text" id="userName">
+    </div>
+    <div>
+        <span>年龄</span>
+        <input type="text" id="userAge">
+    </div>
+    <div>
+        <span>电话</span>
+        <input type="text" id="userPhone">
+    </div>
+    <div>
+        <span>地址</span>
+        <input type="text" id="userAddress">
+    </div>
+    <div class="sumbit" id="submit">提交</div>
+</div>
+<script type="text/javascript" src="ajax.js"></script>
+<script type="text/javascript">
+    var submit = document.getElementById("submit");
+    var userName = document.getElementById("userName");
+    var userAge = document.getElementById("userAge");
+    var userPhone = document.getElementById("userPhone");
+    var userAddress = document.getElementById("userAddress");
+    var urlObj = window.location.href;
+    var index=urlObj.indexOf("=") // 28;获取当前等号的索引
+    var id = urlObj.substr(index+1);
+    var isFlag = index<0?false:true;
+
+//    String.prototype.queryURLParameter = function () {
+//        var obj = {};
+//        var reg = /([^?=&#]+)=([^?=&#]+)/g;
+//        console.log(this)
+//        this.replace(reg,function () {
+////            console.log(arguments)
+//            var key = arguments[1];
+//            var value = arguments[2];
+//            obj[key]  = value;
+//        })
+//        return obj;
+//    }
+//     var str = "http://www.zhufeng.com?username=zhufeng&userpassword=123";
+//    var obj = str.queryURLParameter();
+//    console.log(obj)
+
+    if(isFlag){
+        ajax({
+            url : "/getInfo?id="+id,
+            success:function (jsonData) {
+                console.log(jsonData)
+                if(jsonData.code===0){
+                    var data = jsonData["data"];
+                    userName.value = data["name"];
+                    userAge.value = data["age"];
+                    userPhone.value = data["phone"];
+                    userAddress.value = data["address"];
+                }
+            }
+        })
+    }
+
+
+    console.log(urlObj)
+
+
+    submit.onclick = function () {
+        // 当点击提交按钮时，第一步获取当前input框中value值
+        var obj = {
+            name : userName.value,
+            age : userAge.value,
+            phone : userPhone.value,
+            address : userAddress.value
+        }
+        if(isFlag){
+            obj.id = id;
+            ajax({
+                url : "/updateInfo",
+                type:"post",
+                data:JSON.stringify(obj),
+                success:function (jsonData) {
+                    if(jsonData.code == 0){
+                        window.location.href = "index.html";
+                        return;
+                    }
+                    alert(jsonData.msg)
+                }
+            })
+            return;
+        }
+        ajax({
+            url:"/addInfo",
+            type:"post",
+            data : JSON.stringify(obj),
+            success:function (jsonData) {
+                if(jsonData.code === 0){
+                    // 页面跳转
+                    window.location.href = "index.html";
+                    alert(jsonData.msg);
+                    return;
+                }
+                alert(jsonData.msg)
+            }
+        })
+
+    }
+
+
+
+</script>
+
+
+
+</body>
+</html>

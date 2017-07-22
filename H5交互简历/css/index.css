@@ -1,0 +1,461 @@
+html{
+	font-size: 100px;
+}
+html,body{
+	width: 100%;
+	height: 100%;
+	overflow: hidden;
+}
+body{
+	-webkit-user-select: none;
+	position: relative;
+	z-index: -3;
+}
+.loading,.phone,.message,.cube,.swiper{
+	display: none;
+	width: 100%;
+	height: 100%;
+	position: relative;
+	overflow: hidden;
+}
+/*--loading--*/
+.loading{
+	/*display: block;*/
+	background: #000;	
+}
+.loading .title{
+	position: absolute;
+	width: 100%;
+	left: 0;
+	top:50%;
+	margin-top: -2.2rem;
+	height: 1.4rem;
+	color: #fff;
+	text-align: center;
+	letter-spacing: 0.04rem;
+}
+.loading .title h1{
+	font-size: .5rem;
+	margin-bottom:.2rem ;
+	height: .75rem;
+	line-height: .75rem;
+}
+.loading .title h2{
+	font-size: .26rem;
+	height: .45rem;
+	line-height: .45rem;
+}
+.loading .progress{
+	position: absolute;
+	top: 50%;
+	left: 50%;
+	width: 4.6rem;
+	height: .3rem;
+	margin: 0.85rem 0 0 -2.3rem;
+	background: #fff;
+	border-radius: 0.06rem;
+}
+.loading .progressBox{
+	width:0% ;
+	height: 100%;
+	border-radius:0.06rem ;
+	background: linear-gradient(45deg,#5cB85c 25%,#74c274 25%,#74c274 50%,#5cB85c 50%,#5cB85c 75%,#74c274 75%);
+	background: -webkit-linear-gradient(45deg,#5cB85c 25%,#74c274 25%,#74c274 50%,#5cB85c 50%,#5cB85c 75%,#74c274 75%);
+	background-size: 0.3rem 0.3rem;
+	-webkit-animation:loadingMove 1s linear infinite both ;
+	animation:loadingMove 1s linear infinite both ;
+	-webkit-transition: all 1s linear;
+	transition: all 1s linear;
+}
+/*phone*/
+.phone{
+	background: url(../img/zf_phoneBg.jpg) no-repeat;
+	background-size: cover;
+	z-index: -2;
+	-webkit-transition: all .8s;
+	transition: all .8s;
+}
+.phone audio{
+	display: none;
+}
+.phone h2{
+	position: absolute;
+	width: 2.62rem;
+	height: 1.25rem;
+	top:.5rem;
+	left: 50%;
+	margin-left: -1.31rem;
+}
+.phone h2 img{
+	width: 100%;
+	height: 100%;
+}
+.phone .time{
+	display: none;
+	position: absolute;
+	height: .3rem;
+	font-size: .3rem;
+	letter-spacing: 0.05rem;
+	top:1.85rem;
+	width: 100%;
+	text-align: center;
+	line-height: .3rem;
+	color: #fff;
+}
+.phone .listen{
+	position: absolute;
+	width: 5.2rem;
+	height: 3.6rem;
+	left: 50%;
+	margin-left: -2.6rem;
+	bottom: .3rem;
+	background: url(../img/zf_phoneListen.png) no-repeat;
+	background-size: 100% 100%;
+}
+.phone .listen div{
+	position: absolute;
+	width: 1.6rem;
+	height: 1.6rem;
+	right:-0.07rem ;
+	border-radius:50% ;
+	bottom: .47rem;
+}
+.phone .listen .move{
+	z-index: -1;
+	border: .03rem solid #0F0;
+	-webkit-animation: phoneMove 1s linear infinite both;
+	animation: phoneMove 1s linear infinite both;
+}
+.phone .details{
+	position: absolute;
+	width: 5.2rem;
+	height: 6.59rem;
+	bottom: .3rem;
+	left: 50%;
+	margin-left: -2.6rem;
+	background: url(../img/zf_phoneDetail.png) no-repeat;
+	background-size:100% 100% ;	
+	-webkit-transform: translateY(7rem);
+	transform: translateY(7rem);
+	
+	-webkit-transition:all .8s ;
+	transition:all .8s ;
+}
+.phone .details .touch{
+	position: absolute;
+	width: 1.6rem;
+	height: 1.6rem;
+	bottom: .28rem;
+	left: 50%;
+	margin-left: -.8rem;
+	z-index: 5;
+}
+
+
+/*message*/
+.message{
+	background-color: #EAEAEA;
+}
+.message .messageList{
+	margin-top: .2rem;
+	-webkit-transition: all 0.3s;
+	transition: all 0.3s;
+}
+.message .messageList li{
+	position: relative;
+	max-width: 3.6rem;
+	margin-bottom: .4rem;
+	padding: .25rem;
+	line-height: .4rem;
+	font-size: .26rem;
+	border-radius: .1rem;
+	/*开始的时候让每个消息都向下移动1rem，到时候用JS控制，显示谁谁就回归到0rem，这样的话每个消息出来都会有个小过渡动画*/
+	-webkit-transform: translateY(1rem);
+	transform: translateY(1rem);
+	opacity: 0;
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.message .messageList li.student{
+	float: left;
+	margin-left: 1.25rem;
+	background-color: #fff;
+	border: .02rem solid #CACACA;
+}
+.message .messageList li.teacher{
+	float: right;
+	margin-right: 1.25rem;
+	background-color: #A2E45C;
+	border: .02rem solid #96B474;
+}
+.message .messageList li em{
+	position: absolute;
+	width: .1rem;
+	height: .2rem;
+	top: .2rem;
+}
+.message .messageList li.student em{
+	background: url(../img/zf_messageArrow1.png) no-repeat;
+	background-size: 100% 100%;
+	left: -.1rem;
+}
+.message .messageList li.teacher em{
+	background: url(../img/zf_messageArrow2.png) no-repeat;
+	background-size: 100% 100%;
+	right: -.1rem;
+}
+.message .messageList li img{
+	position: absolute;
+	width: .82rem;
+	height: .82rem;
+	top: 0;
+	border-radius:50% ;
+}
+.message .messageList li.student img{
+	left: -1rem;
+}
+.message .messageList li.teacher img{
+	right: -1rem;
+}
+.message .keyBoard{
+	position: absolute;
+	left: 0;
+	width: 100%;
+	height: 5.16rem;
+	bottom: -.54rem;
+	background: url(../img/zf_messageKeyboard.png) no-repeat;
+	background-size: 100% 100%;
+	
+	-webkit-transform: translateY(3.7rem);
+	transform: translateY(3.7rem);
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.message .keyBoard .textTip{
+	display: none;
+	position: absolute;
+	width: 4rem;
+	height: .4rem;
+	line-height: .4rem;
+	font-size: .25rem;
+	top:.35rem;
+	left:.9rem ;
+}
+.message .keyBoard .submit{
+	display: none;
+	position: absolute;
+	width: 1.47rem;
+	height: .74rem;
+	right: .1rem;
+	bottom: .6rem;
+	background: url(../img/zf_messageChat.png) no-repeat;
+	background-size: 100%;
+	z-index: 5;
+}
+/*cube*/
+.cube{
+	-webkit-perspective: 1200px;
+	perspective: 1200px;
+	background: url(../img/zf_cubeBg.jpg) no-repeat center center;
+	background-size:cover ;
+}
+.cube .tip{
+	width: 3.94rem;
+	height: .44rem;
+	position: absolute;
+	bottom: .5rem;
+	left: 50%;
+	margin-left: -1.97rem;
+	background: url(../img/zf_cubeTip.png) no-repeat;
+	background-size:100% ;
+}
+.cube .cubeBox{
+	position: absolute;
+	width: 5.1rem;
+	height: 5.1rem;
+	left: 50%;
+	top: 50%;
+	margin: -2.55rem 0 0 -2.55rem;
+	-webkit-transform-style: preserve-3d;
+	transform-style: preserve-3d;
+	-webkit-transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+	transform: scale(0.6) rotateX(-30deg) rotateY(45deg);
+	-webkit-transition: all .3s;
+	transition: all .3s;
+}
+.cube .cubeBox li{
+	width: 100%;
+	height: 100%;
+	position: absolute;
+}
+.cube .cubeBox li:nth-child(1){
+	background: url(../img/zf_cube1.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform: translateZ(2.55rem);
+	transform: translateZ(2.55rem);
+}
+.cube .cubeBox li:nth-child(2){
+	background: url(../img/zf_cube5.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform:rotateY(180deg) translateZ(2.55rem);
+	transform:rotateY(180deg) translateZ(2.55rem);
+}
+.cube .cubeBox li:nth-child(3){
+	background: url(../img/zf_cube2.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform:rotateY(90deg) translateZ(2.55rem);
+	transform:rotateY(90deg) translateZ(2.55rem);
+}
+.cube .cubeBox li:nth-child(4){
+	background: url(../img/zf_cube4.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform:rotateY(-90deg) translateZ(2.55rem);
+	transform:rotateY(-90deg) translateZ(2.55rem);
+}
+.cube .cubeBox li:nth-child(5){
+	background: url(../img/zf_cube3.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform:rotateX(-90deg) translateZ(2.55rem);
+	transform:rotateX(-90deg) translateZ(2.55rem);
+}
+.cube .cubeBox li:nth-child(6){
+	background: url(../img/zf_cube6.png) no-repeat;
+	background-size:100% 100% ;
+	-webkit-transform:rotateX(90deg) translateZ(2.55rem);
+	transform:rotateX(90deg) translateZ(2.55rem);
+}
+/*swiper*/
+.swiper .return{
+	position: absolute;
+	width: .64rem;
+	height: .75rem;
+	z-index: 999;
+	top: .2rem;
+	right: .2rem;
+	background: url(../img/zf_return.png) no-repeat;
+	background-size:100% 100% ;
+}
+.swiper-container, .swiper-slide{
+	position: relative;
+	width: 100%;
+	height: 100%;
+	font-family: "microsoft sans serif";
+}
+/*page1*/
+.page1{
+	/*background: #FFF;*/
+}
+.page1 dl{
+	position: absolute;
+	width: 5.4rem;
+	height: 7.2rem;
+	top:50%;
+	left: 50%;
+	margin: -3.6rem 0 0 -2.7rem;
+	z-index: 100;
+	transform-style: preserve-3d;
+}
+.page1 dl dt,.page1 dl dd{
+	height: .6rem;
+	line-height: .6rem;
+	background-color: #8fBB4C;
+}
+.page1 dl dt{
+	text-align: center;
+	color: yellow;
+	font-size: .4rem;
+}
+.page1 dl dd{
+	position: relative;
+	padding-left: .64rem;
+	border-top:.02rem dashed rgba(255,255,255,.3) ;
+}
+.page1 dl dd a,.page1 dl dd em{
+	position: relative;
+	z-index: 1000;
+}
+.page1 dl dd a{
+	color: #000;
+	font-size: .28rem;
+}
+.page1 dl dd em{
+	position: absolute;
+	left: .15rem;
+	width: .36rem;
+	height: .42rem;
+	font-size: .2rem;
+	color: #fff;
+	background: url(../img/zf_outline.png) no-repeat;
+	background-size:100% 100% ;
+	text-align: center;
+	line-height: .42rem;
+	font-style: normal;
+	margin-top: -.21rem;
+	top:50%;
+}
+/*page2*/
+.page2{
+	background:#fff9c1 ;
+}
+.page2 h2{
+	width: 100%;
+	height: .9rem;
+	position: absolute;
+	top: .8rem;
+	text-align: center;
+	line-height: .9rem;
+	color:#665c50 ;
+	font-weight: normal;
+	font-size: .6rem;
+	opacity: 0;
+}
+.page2 .box{
+	position: absolute;
+	width: 5.12rem;
+	height: 5.8rem;
+	top: 50%;
+	left: 50%;
+	margin: -2.9rem 0 0 -2.56rem;
+}
+.page2 .box img{
+	position: absolute;
+	width: 1rem;
+	height: 1rem;
+	top:50%;
+	left: 50%;
+	margin: -.5rem 0 0 -.5rem;
+	opacity: 0;
+}
+.page2 .box img:nth-child(1){
+	width: 1.32rem;
+	height: 1.7rem;
+	margin: -.85rem 0 0 -.66rem;
+}
+/*把动画都加在#page2里面，等到切换到他的时候，给他加上对应的ID名*/
+/*哪个元素需要加动画，就把opacity变成0*/
+#page2 h2{
+	-webkit-animation:bounceInLeft 1s both ;
+	animation:bounceInLeft 1s both ;
+}
+#page2 .box img:nth-child(1){
+	-webkit-animation: shake 1s both;
+	animation: shake 1s both;
+}
+#page2 .box img:nth-child(2){
+	animation: page2Move1 .5s .5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(3){
+	animation: page2Move2 .5s .5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(4){
+	animation: page2Move3 .5s .5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(5){
+	animation: page2Move4 .5s .5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(6){
+	animation: page2Move5 .5s .5s both, page2Shake 1s 1s infinite;
+}
+#page2 .box img:nth-child(7){
+	animation: page2Move6 .5s .5s both, page2Shake 1s 1s infinite;
+}

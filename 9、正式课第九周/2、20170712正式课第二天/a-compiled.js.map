@@ -1,0 +1,1 @@
+{"version":3,"sources":["a.js"],"names":[],"mappings":"AAAA,SAAS,EAAT,GAAc;AACV,YAAQ,GAAR,CAAY,CAAZ;AACH;AACD;AACA,OAAO,OAAP,CAAe,EAAf,GAAoB,EAApB;AACA","file":"a-compiled.js","sourcesContent":["function fn() {\n    console.log(1)\n}\n// 是把方法fn暴露出来，module.exports\nmodule.exports.fn = fn;\n// module.exports = {fn:fn,fn1:fn1}"]}

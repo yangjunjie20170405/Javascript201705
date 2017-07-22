@@ -1,0 +1,1 @@
+{"version":3,"sources":["b.js"],"names":[],"mappings":"AAAA,SAAS,EAAT,CAAY,GAAZ,EAAiB;AACb,WAAO,MAAI,EAAX;AACH;AACD,OAAO,OAAP,CAAe,EAAf,GAAoB,EAApB","file":"b-compiled.js","sourcesContent":["function fn(num) {\n    return num*30;\n}\nmodule.exports.fn = fn;"]}
